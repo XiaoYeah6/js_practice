@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #container{
+            width: 750px;
+            height: 291px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #selected{
+            list-style: none;
+        }
+
+        #selected li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: rgba(0 ,0 ,0 ,0.4);
+            border-radius: 5px;
+            line-height: 20px;
+            text-align: center;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .active img{
+            display: none;
+        }
+
+        #container .view{
+            display: block;
+        }
+
+        #selected{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        #selected .point{
+            background: #ff0036;
+        }
+    </style>
+</head>
+<body>
+    <div id = 'container'>
+        <div class = 'active'>
+            <img class = 'view' src="img/1.jpg" alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+            <img src="img/5.jpg" alt="">
+        </div>
+
+        <ul id = 'selected'>
+            <li class = 'point'>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+
+        <span>&lt;</span>
+        <span>&gt;</span>
+    </div>
+
+    <script>
+        var aLi = document.getElementsByTagName('li');
+        var aImg = document.getElementsByTagName('img');
+
+        for(var i = 0;i<aLi.length;i++){
+            aLi[i].index = i;
+            aLi[i].onclick = function(){
+                for(var j = 0;j<aLi.length;j++){
+                    aLi[j].className = '';
+                    aImg[j].className = '';
+                }
+                this.className = 'point';
+                aImg[this.index].className = 'view';
+            }
+        }
+    </script>
+</body>
+</html>
