@@ -19,14 +19,6 @@
             position: relative;
         }
 
-        #container img{
-            display: none;
-        }
-
-        #container .view{
-            display: block;
-        }
-
         #selected{
             list-style: none;
             position: absolute;
@@ -42,10 +34,27 @@
             margin-right: 5px;
         }
 
-        /* #selected li:hover{
-            background: rgba( 0, 0, 0, 0.2);
+        #img-box img{
+            transition: all 2s ease;
+            position: absolute;
+        }
+
+        #img-box{
+            position: relative;
+        }
+
+        #img-box .view{
+            opacity: 1;
+        }
+
+        #img-box img{
+            opacity: 0;
+        }
+
+        #selected .choice{
             cursor: pointer;
-        } */
+            background: rgba( 0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -57,7 +66,7 @@
         </div>
 
         <ul id = 'selected'>
-            <li></li>
+            <li class = 'choice'></li>
             <li></li>
             <li></li>
         </ul>
@@ -71,7 +80,14 @@
             aLi[i].index = i;
             
             aLi[i].onmouseover = function(){
-                aImg[this.index].className = 'view';
+
+                for(var j = 0; j<aLi.length; j++){
+                    aLi[j].className = '';
+                    aImg[j].style.opacity = '0';
+                }
+
+                this.className = 'choice';
+                aImg[this.index].style.opacity = '1';
             }
             
         }
