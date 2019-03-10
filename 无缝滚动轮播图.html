@@ -107,11 +107,18 @@
             animate(oImgBox,{
                 left: -num*750
             });
+
+            for(var j = 0; j<aLi.length; j++){
+                aLi[j].className = '';
+            }
+            aLi[num == 5?0:num].className = 'choice';
         }
 
         var oNext = document.getElementById('next');
+        var oPre = document.getElementById('pre');
         var oImgBox = document.getElementById('img-box');
         var aImg = document.getElementsByTagName('img');
+        var aLi = document.getElementsByTagName('li');
         var iNow = 0;
 
         oNext.onclick = function(){
@@ -119,6 +126,15 @@
             if(iNow == aImg.length){
                 oImgBox.style.left = 0;
                 iNow = 1;
+            }
+            change(iNow);
+        }
+
+        oPre.onclick = function(){
+            iNow--;
+            if(iNow == -1){
+                oImgBox.style.left = -(aImg.length - 1)*750 + 'px';
+                iNow = aImg.length - 2;
             }
             change(iNow);
         }
