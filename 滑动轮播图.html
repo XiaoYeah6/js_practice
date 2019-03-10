@@ -17,6 +17,7 @@
             height: 291px;
             margin: 100px auto;
             position: relative;
+            overflow: hidden;
         }
 
         #img-box{
@@ -94,5 +95,25 @@
         <span id = 'pre'>&lt;</span>
         <span id = 'next'>&gt;</span>
     </div>
+
+    <script>
+        var aLi = document.getElementsByTagName('li');
+        var oPre = document.getElementById('pre');
+        var oNext = document.getElementById('next');
+
+         for(var i = 0;i<aLi.length;i++){
+
+             aLi[i].onclick = function(){
+
+                for(var j = 0;j<aLi.length;j++){
+                aLi[j].className = '';
+                }
+
+                 this.className = 'choice';
+             }
+         }
+
+
+    </script>
 </body>
 </html>
