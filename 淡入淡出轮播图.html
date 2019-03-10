@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #container{
+            width: 750px;
+            height: 291px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #container img{
+            display: none;
+        }
+
+        #container .view{
+            display: block;
+        }
+
+        #selected{
+            list-style: none;
+            position: absolute;
+            bottom: 10px;
+            left: 330px;
+        }
+
+        #selected li{
+            width: 30px;
+            height: 5px;
+            background: rgba( 0, 0, 0, 0.4);
+            float: left;
+            margin-right: 5px;
+        }
+
+        /* #selected li:hover{
+            background: rgba( 0, 0, 0, 0.2);
+            cursor: pointer;
+        } */
+    </style>
+</head>
+<body>
+    <div id = 'container'>
+        <div id = 'img-box'>
+            <img class = 'view' src="img/1.jpg" alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+        </div>
+
+        <ul id = 'selected'>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        var aLi = document.getElementsByTagName('li');
+        var aImg = document.getElementsByTagName('img');
+
+        for(var i = 0; i<aLi.length; i++){
+            aLi[i].index = i;
+            
+            aLi[i].onmouseover = function(){
+                aImg[this.index].className = 'view';
+            }
+            
+        }
+    </script>
+</body>
+</html>

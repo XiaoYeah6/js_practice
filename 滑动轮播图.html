@@ -22,6 +22,10 @@
 
         #img-box{
             width: 3750px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transition: left 1s ease;
         }
 
         #img-box img{
@@ -100,20 +104,42 @@
         var aLi = document.getElementsByTagName('li');
         var oPre = document.getElementById('pre');
         var oNext = document.getElementById('next');
+        var oImgBox = document.getElementById('img-box');
+        var iNow = 0;
 
-         for(var i = 0;i<aLi.length;i++){
-
-             aLi[i].onclick = function(){
-
-                for(var j = 0;j<aLi.length;j++){
-                aLi[j].className = '';
+        function change(num){
+            for(var j = 0; j<aLi.length; j++){
+                    aLi[j].className = '';
                 }
 
-                 this.className = 'choice';
-             }
-         }
+                aLi[num].className = 'choice';
+                oImgBox.style.left = -num * 750 + "px";
+        }
 
+        for(var i = 0; i<aLi.length; i++){
+            aLi[i].index = i;
+            aLi[i].onclick = function(){
 
+                change(this.index);
+                iNow = this.index;
+            }
+        }
+
+        oNext.onclick = function(){
+            iNow++;
+            if(iNow == aLi.length){
+                iNow = 0;
+            }
+            change(iNow);
+        }
+
+        oPre.onclick = function(){
+            iNow--;
+            if(iNow == -1){
+                iNow = aLi.length-1;
+            }
+            change(iNow);
+        }
     </script>
 </body>
 </html>
