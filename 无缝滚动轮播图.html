@@ -119,6 +119,7 @@
         var oImgBox = document.getElementById('img-box');
         var aImg = document.getElementsByTagName('img');
         var aLi = document.getElementsByTagName('li');
+        var oContainer = document.getElementById('container');
         var iNow = 0;
 
         oNext.onclick = function(){
@@ -137,6 +138,36 @@
                 iNow = aImg.length - 2;
             }
             change(iNow);
+        }
+
+        for(var i = 0; i<aLi.length; i++){
+            aLi[i].index = i;
+            aLi[i].onclick = function(){
+                for(var j = 0; j<aLi.length; j++){
+                    aLi[j].className = '';
+                }
+                aLi[this.index].className = 'choice';
+                animate(oImgBox,{
+                    left: -this.index*750
+                });
+            }
+        }
+
+        var timer;
+        
+        function run(){
+            timer = setInterval(function(){
+                oNext.onclick();
+            },1500)
+        }
+
+        run();
+        oContainer.onmouseout = function(){
+            run();
+        }
+
+        oContainer.onmouseover = function(){
+            clearInterval(timer);
         }
     </script>
 </body>
