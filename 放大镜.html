@@ -22,7 +22,6 @@
         #bigger{
             width: 400px;
             height: 400px;
-            background: #f00;
             overflow: hidden;
             display: none;
             float: left;
@@ -81,8 +80,12 @@
                 oSelected.style.top = y + 'px';
                 oSelected.style.left = x + 'px';
 
-                oBigimg.style.left = -oSelected.offsetLeft * 2 + 'px';
-                oBigimg.style.top = -oSelected.offsetTop * 2 + 'px';
+                var rateX = oSelected.offsetLeft/(oImgs.offsetWidth - oSelected.offsetWidth);
+                var rateY = oSelected.offsetTop/(oImgs.offsetHeight - oSelected.offsetHeight);
+                oBigimg.style.left = -rateX * (oBigimg.offsetWidth - oBigger.offsetWidth) + 'px';
+                oBigimg.style.top = -rateY * (oBigimg.offsetHeight - oBigger.offsetHeight) + 'px';
+                // oBigimg.style.left = -oSelected.offsetLeft * 2 + 'px';
+                // oBigimg.style.top = -oSelected.offsetTop * 2 + 'px';
             }
         }
 
