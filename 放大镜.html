@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #imgs{
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        #bigger{
+            width: 400px;
+            height: 400px;
+            background: #f00;
+            overflow: hidden;
+            display: none;
+        }
+
+        #selected{
+            width: 200px;
+            height: 200px;
+            background: rgba( 255, 255, 255, 0.4);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id = 'imgs'>
+        <img id = 'origin' src="img/small_img.jpg" alt="">
+        <div id = 'selected'></div>
+    </div>
+    <div id = 'bigger'><img src="img/big_img.jpg" alt=""></div>
+    
+    <script>
+        var oOrigin = document.getElementById('origin');
+        var oSelected = document.getElementById('selected');
+
+        oOrigin.onmouseover = function(e){
+            oSelected.style.display = block;
+            document.onmousemove = function(e){
+                console.log(e.clientX,e.clientY);
+                oSelected.style.top = e.clientY - 75 + 'px';
+                oSelected.style.left = e.clientX - 75 + 'px';
+            }
+        }
+
+        oOrigin.onmouseout = function(e){
+            document.onmousemove = null;
+        }
+    </script>
+</body>
+</html>
