@@ -21,6 +21,7 @@
             background: #f00;
             width: 200px;
             height: 50px;
+            cursor: pointer;
         }
     
         li{
@@ -55,7 +56,7 @@
         var aUl = document.getElementsByTagName('ul');
 
         for(var i = 0; i < aH2.length; i++){
-            aUl[i].index = i;
+            aH2[i].index = i;
             aH2[i].flag = false;
             aH2[i].onclick = function(){
                 if(this.flag){
